@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edmund Makowski-Scott | Mechanical Engineering Portfolio</title>
+<meta name="description" content="Mechanical engineering student at the Milwaukee School of Engineering with a minor in aerospace engineering. I design dig systems for lunar rovers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #eef1f3;
+  --sheet: #ffffff;
+  --ink: #1a2026;
+  --muted: #55616b;
+  --rule: #c9d2d8;
+  --accent: #24577d;
+  --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 1.125rem/1.65 var(--serif);
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Header */
+.top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .75rem 2rem; padding: 1.5rem 0; font-family: var(--sans); font-size: .95rem; }
+.top .mark { font-weight: 700; color: var(--ink); text-decoration: none; }
+.top nav { display: flex; gap: 1.5rem; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover { color: var(--ink); text-decoration: underline; }
+
+.intro { padding: 2.5rem 0 2rem; }
+h1 { font: 700 clamp(2.4rem, 6vw, 4rem)/1.05 var(--sans); letter-spacing: -.02em; margin: 0 0 1rem; }
+.intro p { max-width: 36rem; margin: 0; font-size: 1.3rem; line-height: 1.5; }
+
+/* Drawing sheet with title block */
+.sheet { background: var(--sheet); border: 2px solid var(--ink); }
+.sheet img { display: block; width: 100%; height: auto; max-height: 520px; object-fit: contain; padding: 1.5rem; }
+.block { display: grid; grid-template-columns: 2fr 2fr 2fr 1.4fr; border-top: 2px solid var(--ink); font-family: var(--sans); }
+.block > div { padding: .75rem 1rem; border-left: 1px solid var(--ink); }
+.block > div:first-child { border-left: 0; }
+.block dt { font-size: .8rem; color: var(--muted); margin: 0; }
+.block dd { margin: .15rem 0 0; font-weight: 600; font-size: 1rem; line-height: 1.3; }
+.block dl { display: contents; }
+.sheet figcaption { padding: .6rem 1rem; border-top: 1px solid var(--rule); font: .9rem/1.4 var(--sans); color: var(--muted); }
+
+/* Sections */
+section { padding: 4.5rem 0 0; }
+h2 { font: 700 1.9rem/1.2 var(--sans); letter-spacing: -.01em; margin: 0 0 1.25rem; }
+h3 { font: 600 1.15rem/1.3 var(--sans); margin: 2.25rem 0 .6rem; }
+.lead { margin: 0 0 1.25rem; font-size: 1.15rem; color: var(--muted); }
+.lead.more { margin-top: 3rem; }
+h3.project-title { margin: 2rem 0 1rem; font-size: 1.35rem; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; }
+.prose p { margin: 0 0 1.1rem; max-width: 38rem; }
+.prose ul { margin: 0; padding-left: 1.2rem; max-width: 38rem; }
+.prose li { margin-bottom: .6rem; }
+.result { border-left: 4px solid var(--accent); padding: .25rem 0 .25rem 1.25rem; margin: 1.75rem 0; font-size: 1.25rem; line-height: 1.45; max-width: 38rem; }
+.result strong { font-family: var(--sans); font-weight: 700; }
+
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+.figs figure { margin: 0; background: var(--sheet); border: 1px solid var(--rule); }
+.figs img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; padding: 1rem; }
+.figs figcaption { padding: .6rem 1rem; border-top: 1px solid var(--rule); font: .9rem/1.4 var(--sans); color: var(--muted); }
+
+/* Skills */
+.skills { margin: 0; }
+.skills div { display: grid; grid-template-columns: 13rem 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--rule); }
+.skills div:last-child { border-bottom: 1px solid var(--rule); }
+.skills dt { font: 600 1rem var(--sans); }
+.skills dd { margin: 0; }
+
+/* Contact */
+.contact { list-style: none; padding: 0; margin: 0; font-family: var(--sans); font-size: 1.05rem; }
+.contact li { padding: .55rem 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 9rem 1fr; }
+.contact li:last-child { border-bottom: 1px solid var(--rule); }
+.contact span { color: var(--muted); }
+.button { display: inline-block; margin-top: 1.75rem; padding: .75rem 1.25rem; background: var(--accent); color: #fff; font: 600 1rem var(--sans); text-decoration: none; }
+.button:hover { background: var(--ink); color: #fff; }
+
+footer { margin-top: 5rem; padding: 1.5rem 0 3rem; border-top: 1px solid var(--rule); font: .9rem var(--sans); color: var(--muted); }
+
+@media (max-width: 760px) {
+  .cols { grid-template-columns: 1fr; gap: 1.5rem; }
+  .block { grid-template-columns: 1fr 1fr; }
+  .block > div:nth-child(3) { border-left: 0; }
+  .block > div:nth-child(n+3) { border-top: 1px solid var(--ink); }
+  .skills div, .contact li { grid-template-columns: 1fr; gap: .25rem; }
+  section { padding-top: 3.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top">Edmund Makowski-Scott</a>
+    <nav aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="intro">
+      <h1>Edmund Makowski-Scott</h1>
+      <p>Mechanical engineering student at the Milwaukee School of Engineering with a minor in aerospace engineering. I spend most of my time designing dig systems for lunar rovers and testing them.</p>
+    </div>
+
+    <section id="work" aria-labelledby="work-h">
+      <h2 id="work-h">Below are some examples of my work</h2>
+      <h3 class="project-title">MSOE NASA Lunabotics: excavation system</h3>
+
+      <figure class="sheet">
+        <img src="images/rover-side.png" alt="Side view CAD of a six-wheeled lunar rover with a large dig drum on an actuated arm at each end">
+        <dl class="block">
+          <div><dt>Project</dt><dd>NASA Lunabotics rover, excavation system</dd></div>
+          <div><dt>Role</dt><dd>Lead excavation design engineer</dd></div>
+          <div><dt>School</dt><dd>Milwaukee School of Engineering, class of 2029</dd></div>
+          <div><dt>Result</dt><dd>130% more total regolith capacity</dd></div>
+        </dl>
+        <figcaption>Side view of the rover with a dig drum on an actuated arm at each end.</figcaption>
+      </figure>
+
+      <div class="cols prose">
+        <div>
+          <p><a href="https://www.nasa.gov/learning-resources/lunabotics-challenge/">NASA's Lunabotics Challenge</a> is a competition where university teams build a rover that drives across simulated lunar terrain, digs regolith, and hauls it to a collection point. MSOE's team has about 70 members. I lead the excavation subsystem: the hardware that digs and collects material.</p>
+          <p>I designed, modeled, tested, and integrated the dig system, and as subsystem lead I worked out how it mounts to the chassis and shares space, power, and control with the rest of the rover.</p>
+          <div class="result"><strong>Result:</strong> from the 2025 design to the 2026 design, the total regolith capacity of MSOE's team system increased by 130%.</div>
+        </div>
+        <div>
+          <h3 style="margin-top:0">How my team and I designed it</h3>
+          <ul>
+            <li>Researched excavation mechanisms used in extraterrestrial applications before choosing a direction.</li>
+            <li>Modeled designs in Onshape and SolidWorks, and ran FEA on structural parts.</li>
+            <li>Used discrete element modeling (DEM) to study how the dig system moves granular material.</li>
+            <li>Built test stands and tested multiple physical designs in our regolith simulant pit, then kept the best performer.</li>
+            <li>Competed with the rover in NASA's international competition against other collegiate teams.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="lead more">Below are more examples of dig systems I designed.</p>
+      <div class="figs">
+        <figure>
+          <img src="images/dig-concept-a.png" alt="CAD of a dig system concept with a drum, angled conveyor tube, two linear actuators, and an open hopper" loading="lazy">
+          <figcaption>Dig system concept: drum, conveyor tube, linear actuators, and collection hopper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/rover-iso-arms.png" alt="CAD of the rover with two dark dig drums on actuated arms attached to the chassis" loading="lazy">
+          <figcaption>Rover with both dig arms mounted to the chassis.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/rover-full.png" alt="CAD of the full rover assembly with dig drums, drive wheels, and electronics enclosure" loading="lazy">
+          <figcaption>Full assembly: the dig system alongside the drive wheels and electronics enclosure.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="leadership" aria-labelledby="leadership-h">
+      <h2 id="leadership-h">Team leadership and systems engineering</h2>
+      <div class="prose">
+        <p>I am also the team's secretary. I handle HR for the team, and connect the president, vice president, and project manager with the subsystem leads. We follow NASA's systems engineering approach, so my role is to keep system requirements and interfaces moving between subsystems. I also work with the university and outside sponsors on funding and component donations, and use Jira to keep deadlines visible.</p>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-h">
+      <h2 id="skills-h">Skills and software</h2>
+      <dl class="skills">
+        <div><dt>Design and analysis</dt><dd>Onshape, SolidWorks, MATLAB, finite element analysis (FEA), discrete element modeling (DEM)</dd></div>
+        <div><dt>Systems engineering</dt><dd>NASA systems engineering approach, verification and validation, project management, Jira</dd></div>
+        <div><dt>Fabrication</dt><dd>Machining, CNC, additive manufacturing, rapid prototyping, soldering, mechanical repair</dd></div>
+      </dl>
+    </section>
+
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <div class="prose">
+        <p>I grew up in Milwaukee and study mechanical engineering with an aerospace minor at the Milwaukee School of Engineering. I graduate in 2029 and am pursuing an education in engineering due to my love for better understanding how the world around me works.</p>
+        <p>Before college I spent a few years as a sailing instructor and boat repairman until I eventually had the opportunity to be a deckhand and navigator on the tall ship Denis Sullivan, sailing the Atlantic and the Caribbean, while teaching the physics of sailing. At MSOE I am also a head curriculum developer in the Honors Program, where I work with the Wisconsin Department of Corrections and Wisconsin Department of Justice to design STEM classes for incarcerated individuals around Wisconsin. I am also a CREATE Fellow at MSOE where I teach engineering students how to use 3D printers, machining, and other common engineering skills.</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <ul class="contact">
+        <li><span>Email</span><a href="mailto:makowski-scotte@msoe.edu">makowski-scotte@msoe.edu</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/edmund-makowski-scott">linkedin.com/in/edmund-makowski-scott</a></li>
+        <li><span>GitHub</span><a href="https://github.com/EdmundMakowski-Scott">github.com/EdmundMakowski-Scott</a></li>
+      </ul>
+      <a class="button" href="assets/Edmund-Makowski-Scott-Resume.pdf" download>Download resume (PDF)</a>
+    </section>
+  </main>
+
+  <footer>&copy; 2026 Edmund Makowski-Scott</footer>
+</div>
+</body>
+</html>
