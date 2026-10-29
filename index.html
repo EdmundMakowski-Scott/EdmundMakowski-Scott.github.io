@@ -54,6 +54,17 @@ h1 { font: 700 clamp(2.4rem, 6vw, 4rem)/1.05 var(--sans); letter-spacing: -.02em
 .block dl { display: contents; }
 .sheet figcaption { padding: .6rem 1rem; border-top: 1px solid var(--rule); font: .9rem/1.4 var(--sans); color: var(--muted); }
 
+/* Dropdown menus: hidden until a menu has at least one <li> */
+[hidden] { display: none !important; }
+.nav-item { position: relative; display: flex; align-items: baseline; }
+.caret { background: none; border: 0; padding: .35rem .4rem; cursor: pointer; color: var(--muted); }
+.caret::before { content: ""; display: block; width: .4rem; height: .4rem; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+.caret:hover { color: var(--ink); }
+.caret:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.menu { position: absolute; top: 100%; left: 0; z-index: 10; min-width: 15rem; max-width: calc(100vw - 3rem); margin: .4rem 0 0; padding: .4rem 0; list-style: none; background: var(--sheet); border: 1px solid var(--rule); }
+.menu a { display: block; padding: .55rem 1rem; }
+.menu a:hover { background: var(--paper); }
+
 /* Sections */
 section { padding: 4.5rem 0 0; }
 h2 { font: 700 1.9rem/1.2 var(--sans); letter-spacing: -.01em; margin: 0 0 1.25rem; }
@@ -103,11 +114,29 @@ footer { margin-top: 5rem; padding: 1.5rem 0 3rem; border-top: 1px solid var(--r
 <body>
 <div class="wrap">
   <header class="top">
-    <a class="mark" href="#top">Edmund Makowski-Scott</a>
+    <a class="mark" href="#top">Engineering Portfolio</a>
     <nav aria-label="Primary">
-      <a href="#work">Work</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#skills">Skills</a>
+      <div class="nav-item">
+        <a href="#work">Work</a>
+        <button class="caret" type="button" aria-label="Show Work menu" aria-expanded="false" hidden></button>
+        <ul class="menu" hidden>
+          <!-- To turn on this dropdown, add links here, for example: <li><a href="#project-id">Project name</a></li> -->
+        </ul>
+      </div>
+      <div class="nav-item">
+        <a href="#leadership">Leadership</a>
+        <button class="caret" type="button" aria-label="Show Leadership menu" aria-expanded="false" hidden></button>
+        <ul class="menu" hidden>
+          <!-- To turn on this dropdown, add links here, for example: <li><a href="#project-id">Project name</a></li> -->
+        </ul>
+      </div>
+      <div class="nav-item">
+        <a href="#skills">Skills</a>
+        <button class="caret" type="button" aria-label="Show Skills menu" aria-expanded="false" hidden></button>
+        <ul class="menu" hidden>
+          <!-- To turn on this dropdown, add links here, for example: <li><a href="#project-id">Project name</a></li> -->
+        </ul>
+      </div>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -121,7 +150,7 @@ footer { margin-top: 5rem; padding: 1.5rem 0 3rem; border-top: 1px solid var(--r
 
     <section id="work" aria-labelledby="work-h">
       <h2 id="work-h">Below are some examples of my work</h2>
-      <h3 class="project-title">MSOE NASA Lunabotics: excavation system</h3>
+      <h3 class="project-title" id="lunabotics">MSOE NASA Lunabotics: excavation system</h3>
 
       <figure class="sheet">
         <img src="images/rover-side.png" alt="Side view CAD of a six-wheeled lunar rover with a large dig drum on an actuated arm at each end">
@@ -172,7 +201,7 @@ footer { margin-top: 5rem; padding: 1.5rem 0 3rem; border-top: 1px solid var(--r
     <section id="leadership" aria-labelledby="leadership-h">
       <h2 id="leadership-h">Team leadership and systems engineering</h2>
       <div class="prose">
-        <p>I am also the team's secretary. I handle HR for the team, and connect the president, vice president, and project manager with the subsystem leads. We follow NASA's systems engineering approach, so my role is to keep system requirements and interfaces moving between subsystems. I also work with the university and outside sponsors on funding and component donations, and use Jira to keep deadlines visible.</p>
+        <p>I am also the team's secretary. I handle HR for the team, and connect the president, vice president, and project manager with the subsystem leads. We follow NASA's systems engineering approach, so my role is to keep system requirements and interfaces moving between subsystems. I also work with the university and outside sponsors on funding and component donations.</p>
       </div>
     </section>
 
@@ -180,7 +209,7 @@ footer { margin-top: 5rem; padding: 1.5rem 0 3rem; border-top: 1px solid var(--r
       <h2 id="skills-h">Skills and software</h2>
       <dl class="skills">
         <div><dt>Design and analysis</dt><dd>Onshape, SolidWorks, MATLAB, finite element analysis (FEA), discrete element modeling (DEM)</dd></div>
-        <div><dt>Systems engineering</dt><dd>NASA systems engineering approach, verification and validation, project management, Jira</dd></div>
+        <div><dt>Systems engineering</dt><dd>NASA systems engineering approach, verification and validation, project management</dd></div>
         <div><dt>Fabrication</dt><dd>Machining, CNC, additive manufacturing, rapid prototyping, soldering, mechanical repair</dd></div>
       </dl>
     </section>
@@ -189,7 +218,9 @@ footer { margin-top: 5rem; padding: 1.5rem 0 3rem; border-top: 1px solid var(--r
       <h2 id="about-h">About</h2>
       <div class="prose">
         <p>I grew up in Milwaukee and study mechanical engineering with an aerospace minor at the Milwaukee School of Engineering. I graduate in 2029 and am pursuing an education in engineering due to my love for better understanding how the world around me works.</p>
-        <p>Before college I spent a few years as a sailing instructor and boat repairman until I eventually had the opportunity to be a deckhand and navigator on the tall ship Denis Sullivan, sailing the Atlantic and the Caribbean, while teaching the physics of sailing. At MSOE I am also a head curriculum developer in the Honors Program, where I work with the Wisconsin Department of Corrections and Wisconsin Department of Justice to design STEM classes for incarcerated individuals around Wisconsin. I am also a CREATE Fellow at MSOE where I teach engineering students how to use 3D printers, machining, and other common engineering skills.</p>
+        <p>Before college I spent a few years as a sailing instructor and boat repairman until I eventually had the opportunity to be a deckhand and navigator on the tall ship Denis Sullivan, sailing the Atlantic and the Caribbean, while teaching the physics of sailing.</p>
+        <p>At MSOE I am also a head curriculum developer in the Honors Program, where I work with the Wisconsin Department of Corrections and Wisconsin Department of Justice to design STEM classes for incarcerated individuals around Wisconsin.</p>
+        <p>Finally, I also spend my time at MSOE working for the CREATE Institute as a Student Fellow. I teach engineering students how to use 3D printers, machining equipment, and other common engineering skills.</p>
       </div>
     </section>
 
@@ -206,5 +237,29 @@ footer { margin-top: 5rem; padding: 1.5rem 0 3rem; border-top: 1px solid var(--r
 
   <footer>&copy; 2026 Edmund Makowski-Scott</footer>
 </div>
+<script>
+(function () {
+  var items = document.querySelectorAll('.nav-item');
+  function closeAll() {
+    items.forEach(function (it) {
+      var m = it.querySelector('.menu'), b = it.querySelector('.caret');
+      if (m && b) { m.hidden = true; b.setAttribute('aria-expanded', 'false'); }
+    });
+  }
+  items.forEach(function (it) {
+    var m = it.querySelector('.menu'), b = it.querySelector('.caret');
+    if (!m || !b || !m.querySelector('li')) return;
+    b.hidden = false;
+    b.addEventListener('click', function () {
+      var wasOpen = b.getAttribute('aria-expanded') === 'true';
+      closeAll();
+      if (!wasOpen) { m.hidden = false; b.setAttribute('aria-expanded', 'true'); }
+    });
+    m.addEventListener('click', closeAll);
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.nav-item')) closeAll(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+})();
+</script>
 </body>
 </html>
